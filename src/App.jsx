@@ -10,32 +10,36 @@ import Total from './components/total'
 import items from './components/store-items'
 
 
-
-// function Store() {
-//   return Store_Items.map(storeItem => <StoreItem item={storeItem} />)
-// }
-
-
 function App() {
 
   const [store, setStore] = useState(items)
+  // const [itemsInCart, setItemsInCart] = useState(items)
+  // const [amountToPay, setAmountToPay] = useState(0)
+  const cart = store.filter((item) => {
+    return item.amount > 0
+
+  })
+
+
 
 
 
   return (
     <div className="App">
-
       <header id="store">
         <h1>Grocero</h1>
-        <Store />
+        <Store
+          store={store} />
       </header>
 
       <main id="cart">
         <h2>Your Cart</h2>
-
-        <Cart />
-
-        <div class="total-section">
+        <div className="cart--item-list-container">
+          <Cart
+            // itemsInCart={itemsInCart} 
+            cart={cart} />
+        </div>
+        <div className="total-section">
           <div>
             <h3>Total</h3>
           </div>
